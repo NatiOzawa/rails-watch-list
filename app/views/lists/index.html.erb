@@ -1,0 +1,26 @@
+<h1>Minhas listas</h1>
+
+<% @lists.each do |list| %>
+  <div class="list">
+        <h4><%= link_to list.name, list_path(list.id) %></h4>
+
+    </div>
+<% end %>
+
+
+<%# CAMILA %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1>All my lists</h1>
+      <ul class="list-group mb-3">
+        <% @lists.each do |list| %>
+          <li class="list-group-item">
+            <%= link_to list.name, list_path(list) %>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to "Create a new list", new_list_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

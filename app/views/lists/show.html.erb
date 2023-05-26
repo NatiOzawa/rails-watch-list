@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1><%= @list.name %></h1>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Name</th>
+            <td><%= @list.name %></td>
+          </tr>
+        </tbody>
+      </table>
+
+<% @list.bookmarks.each do |bookmark| %>
+  <h3><%= bookmark.movie.title %></h3>
+  <%= image_tag bookmark.movie.poster_url, height: '200px'%>
+    <%= bookmark.comment %>
+<%end%>
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.input :movie, collection: Movie.all %>
+        <%= f.input :comment %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to "See all the lists", lists_path %>
+    </div>
+  </div>
+</div>
