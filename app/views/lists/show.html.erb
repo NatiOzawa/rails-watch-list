@@ -15,9 +15,12 @@
   <h3><%= bookmark.movie.title %></h3>
   <%= image_tag bookmark.movie.poster_url, height: '200px'%>
     <%= bookmark.comment %>
+    <%= bookmark.movie.rating %>
+    <%= link_to "Remove from list", bookmark_path(bookmark.id, list_id: @list.id), method: :delete, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
 <%end%>
       <%= simple_form_for [@list, @bookmark] do |f| %>
         <%= f.input :movie, collection: Movie.all %>
+        <%# Movie.all ->mostra os nomes dos filmes, dentro do espaço que tem que preencher %>
         <%= f.input :comment %>
         <%= f.submit class: 'btn btn-primary' %>
       <% end %>
